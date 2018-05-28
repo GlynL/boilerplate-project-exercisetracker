@@ -4,6 +4,7 @@ const cors = require("cors");
 const userRoutes = require("./routes/users");
 const exerciseRoutes = require("./routes/exercises");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv").config();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -45,6 +46,6 @@ app.use((err, req, res, next) => {
     .send(errMessage);
 });
 
-const listener = app.listen(process.env.PORT || 3000, () => {
+const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
